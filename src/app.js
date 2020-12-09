@@ -6,15 +6,13 @@ const {sayHello} = require('./lib/strings');
 const app = express();
 
 
-app.get('/strings/hello/:turtle', (req, res) => 
+app.get('/strings/hello/:turtle', (req, res) => {
     
 
-    res.json(
-        {result: `Hello, ${ req.params.turtle }!`}
-    )
+    res.json({result: `Hello, ${ req.params.turtle }!`})
 
 
-);
+    });
 
 
 
