@@ -1,14 +1,20 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 const express = require('express');
+const {sayHello} = require('./lib/strings');
 
 const app = express();
 
 
-app.get('/strings/hello/world', (req, res) => {
-  // eslint-disable-next-line prefer-template
-    res.json({ result: 'Hello, world!'});
+app.get('/strings/hello/:turtle', (req, res) => 
+    
 
-});
+    res.json(
+        {result: `Hello, ${ req.params.turtle }!`}
+    )
+
+
+);
 
 
 

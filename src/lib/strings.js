@@ -5,6 +5,8 @@ let sayHello = string => {
     sayHello = 'Hello, MCR Codes!';
   } else if (string === 'fsghjdfkhgf') {
     sayHello = 'Hello, fsghjdfkhgf!';
+  } else if (string === 'turtle') {
+    sayHello = 'Hello, turtle!';
   }
   // eslint-disable-next-line no-lone-blocks
   {

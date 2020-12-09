@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 const request = require('supertest');
 const app = require('../src/app');
 
 describe('/strings', () => {
   describe('GET /hello/{string}', () => {
+
     it('returns "Hello world!" when passed "world"', done => {
       request(app)
         .get('/strings/hello/world')
@@ -11,8 +13,28 @@ describe('/strings', () => {
           expect(res.body).toEqual({ result: 'Hello, world!' });
           done();
         });
+      });
+        it('returns "Hello, turtle!" when passed "turtle"', done => {
+          request(app)
+            .get('/strings/hello/turtle')
+            .then(res => {
+              expect(res.status).toEqual(200);
+              expect(res.body).toEqual({result: 'Hello, turtle!'});
+              done();
+            });
+      });
     });
-  });
+
+    
+           
+        
+
+        
+          
+    
+  
+  
+  
 
   describe('GET /upper/{string}', () => {
     xit('returns the uppercased string', done => {
@@ -61,3 +83,5 @@ describe('/strings', () => {
     });
   });
 });
+  
+
