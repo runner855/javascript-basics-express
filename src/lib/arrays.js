@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 const startsWith = require('./booleans');
 
 const getNthElement = (index, array) => {
