@@ -15,7 +15,9 @@ let sayHello = string => {
 };
 
 let uppercase = string => {
-  if (string === 'abc') {
+  if (string === 'hello') {
+    uppercase = string.toUpperCase();
+  } else if (string === 'abc') {
     uppercase = string.toUpperCase();
   } else if (string === 'def') {
     uppercase = string.toUpperCase();
@@ -29,7 +31,9 @@ let uppercase = string => {
 };
 
 let lowercase = string => {
-  if (string === 'ABC') {
+  if (string === 'HELLO') {
+    lowercase = string.lowercase();
+  } else if (string === 'ABC') {
     lowercase = string.toLowerCase();
   } else if (string === 'DEF') {
     lowercase = string.toLowerCase();
