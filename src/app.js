@@ -1,5 +1,5 @@
 const express = require('express');
-const { add } = require('./lib/numbers');
+const { add, subtract } = require('./lib/numbers');
 
 const app = express();
 
@@ -23,12 +23,9 @@ app.get('/strings/first-characters/:string', (req, res) => {
 });
 
 app.get('/numbers/add/:a/and/:b', (req, res) => {
-  // eslint-disable-next-line radix
-  const fish = parseInt(req.params.b);
-  // eslint-disable-next-line radix
-  const chips = parseInt(req.params.a);
+  const fish = Number(req.params.b);
+  const chips = Number(req.params.a);
 
-  // eslint-disable-next-line use-isnan
   if (Number.isNaN(fish, chips)) {
     res.status(400).json({ error: 'Parameters must be valid numbers.' });
   }
@@ -36,14 +33,15 @@ app.get('/numbers/add/:a/and/:b', (req, res) => {
   res.status(200).json({ result: add(fish, chips) });
 });
 
-app.get('/numbers/subtract/:a/and/:b', (req, res) => {
-  // eslint-disable-next-line radix
-  const a = parseInt(req.params.a);
-  // eslint-disable-next-line radix
-  const b = parseInt(req.params.b);
+app.get('/numbers/subtract/:b/from/:a', (req, res) => {
+  const a = Number(req.params.b);
+  const b = Number(req.params.a);
 
-  // eslint-disable-next-line no-undef
-  res.status(200).json({ result: subtract(a, b) });
+  if (Number.isNaN(a, b)) {
+    res.status(400).json({ error: 'Parameters must be valid numbers.' });
+  }
+
+  res.status(200).json({ result: subtract(b, a) });
 });
 
 module.exports = app;
