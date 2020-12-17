@@ -1,6 +1,6 @@
 const express = require('express');
-const { negate, truthiness, isOdd, startsWith } = require('./lib/booleans');
-
+const { getNthElement, arrayToCSVString } = require('./lib/arrays');
+const { negate, truthiness, isOdd } = require('./lib/booleans');
 const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
 
 const app = express();
@@ -114,6 +114,14 @@ app.get('/booleans/cat/starts-with/d', (req, res) => {
 
 app.get('/booleans/cat/starts-with/cat', (req, res) => {
   res.status(400).json({ error: 'Parameter "character" must be a single character.' });
+});
+
+app.post('/arrays/element-at-index/:index', (req, res) => {
+  res.json({ result: getNthElement(req.params.index, req.body.array) });
+});
+
+app.post('/arrays/to-string', (req, res) => {
+  res.status(200).json({ result: arrayToCSVString(req.body.array) });
 });
 
 module.exports = app;

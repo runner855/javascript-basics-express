@@ -1,5 +1,3 @@
-const startsWith = require('./booleans');
-
 const getNthElement = (index, array) => {
   if (index >= array.length) {
     return array[index - array.length];
