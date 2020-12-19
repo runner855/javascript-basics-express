@@ -1,5 +1,11 @@
 const express = require('express');
-const { getNthElement, arrayToCSVString } = require('./lib/arrays');
+const {
+  getNthElement,
+  arrayToCSVString,
+  addToArray,
+  elementsStartingWithAVowel,
+  removeNthElement,
+} = require('./lib/arrays');
 const { negate, truthiness, isOdd } = require('./lib/booleans');
 const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
 
@@ -122,6 +128,26 @@ app.post('/arrays/element-at-index/:index', (req, res) => {
 
 app.post('/arrays/to-string', (req, res) => {
   res.status(200).json({ result: arrayToCSVString(req.body.array) });
+});
+
+app.post('/arrays/append', (req, res) => {
+  res.status(200).json({ result: addToArray(req.body.value, req.body.array) });
+});
+
+app.post('/arrays/starts-with-vowel', (req, res) => {
+  res.status(200).json({ result: elementsStartingWithAVowel(req.body.array) });
+});
+
+app.post('/arrays/remove-element', (req, res) => {
+  const { array } = req.body;
+  const arr = [...array];
+  if (!req.query.index) {
+    removeNthElement(0, arr);
+    res.status(200).json({ result: arr });
+  } else {
+    removeNthElement(req.query.index, arr);
+    res.status(200).json({ result: arr });
+  }
 });
 
 module.exports = app;
